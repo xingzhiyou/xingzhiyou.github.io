@@ -104,3 +104,6 @@ deploy:
   type: git
   repo: https://github.com/xingzhiyou/xingzhiyou.github.io.git
   branch: gh-pages
+
+server:
+  auto_generate: true
