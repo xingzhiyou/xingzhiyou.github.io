@@ -114,6 +114,7 @@ gitalk:
   repo: xingzhiyou.github.io # 用于存放评论数据的 GitHub 仓库
   owner: xingzhiyou # 该 GitHub 仓库所有者
   admin: [xingzhiyou] # 具有写该 GitHub 仓库权限的用户，例如: [adminA,adminB]
+  id: md5(location.pathname) # (可选) 页面的唯一标识
 
 # Waline
 # 详情: https://waline.js.org/
@@ -147,3 +148,4 @@ stylesheets:
 
 # 在 `<body>` 尾部引入 JavaScript 脚本
 scripts:
+- /js/md5.min.js
