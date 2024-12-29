@@ -121,36 +121,176 @@ document.addEventListener("pjax:complete", reset);reset()})</script><meta name="
 
 <hr>
 <h2 id="规则"><a href="#规则" class="headerlink" title="规则"></a>规则</h2><blockquote>
-<p>2024年12月15日：暂定，待修改。<br>2024年12月18日：初步确定，待测试。</p>
+<p>2024年12月15日：暂定，待修改。<br>2024年12月18日：初步确定，待测试。<br>2024年12月28日：基本确定，做最后的规则调试。</p>
 </blockquote>
+<ol>
+<li><p>比赛形式</p>
 <ul>
-<li>不限制难度选择，得分计算公式为：<code>个人得分=得分*（1+0.1（选择难度-10））</code>。</li>
-<li>三人为一个团队。</li>
-<li>团队总分为三个队员得分之和。</li>
-<li>使用随机器保底模式随机13名六星干员，另可自选两名六星干员作为本团队的可选角色池。</li>
-<li>每团队每名六星限出现一次，黍限两次。</li>
-<li>每名五星限出现两次。</li>
-<li>五星以下（不包括）干员限商店购买，五星获取不限制。</li>
-<li>每个开局每队限制一次。</li>
-<li>开局干员选择不做限制。</li>
-<li>每个分队必须包含一名持有死仇藏品的队员。</li>
+<li>本次比赛采用战队赛的形式，每队<strong>3</strong>人，团队总分为<em>3</em>人得分之和。</li>
+<li>每支战队<em>3</em>人中应<strong>至少有1人</strong>在遇到“<code>相遇</code>”节点时，选择“<code>死仇时代的恨意</code>”。</li>
 </ul>
-<h2 id="得分"><a href="#得分" class="headerlink" title="得分"></a>得分</h2><blockquote>
-<p>2024年12月15日：待测试<br>2024年12月18日：初步确定</p>
+</li>
+<li><p>干员使用与选取规则</p>
+<ol>
+<li><p>每支队伍在赛前通过程序在所有六星干员中<strong>随机选出24名六星</strong>干员，随后自选禁用其中的<strong>9</strong>名干员，同时可<strong>自选3名</strong>其他六星干员，组成队伍的“随机六星池”（（24-9+3&#x3D;<strong>18 名</strong>六星干员）。若队伍中存在高规格分队，还需额外自选<strong>禁用其中的4名</strong>干员，即自选<strong>禁用</strong>其中的<strong>13</strong>名干员（24-13+3&#x3D;<strong>14名</strong>六星干员）；该队伍的所有六星干员只能从“随机六星池”中选取且每位六星干员的登场总次数<strong>不得超过1次</strong>（干员<strong>黍限2次</strong>）。若比赛过程中有六星干员临时招募的情况，<strong>不计入上限次数</strong>。</p>
+</li>
+<li><p>每位选手除开局干员外，道中限制抓取<strong>4名五星干</strong>员（锡人不占用抓位次数），<strong>4名四星及三星干员</strong>，若超出限额，每个五星干员扣除<strong>35</strong>分，每个四星或三星干员扣除<strong>25</strong>分，选用<strong>高规格分队</strong>的选手不受此规则限制。</p>
+</li>
+</ol>
+</li>
+<li><p>商店规则</p>
+<ol>
+<li>商店取钱规则为<strong>全队共享余额</strong>，仅能取出总源石锭余额数中的<strong>250点</strong>，若超出250点，每超出1点扣除战队总分25分。队员在比赛期间可以向商店中存钱，但战队余额上限不会超过250点。</li>
+</ol>
+</li>
+<li><p>分数计算细则</p>
+<ol>
+<li><p>个人最终得分&#x3D;得分*（1+0.1（选择难度-10））。</p>
+</li>
+<li><p>每层每关计分如下表所示（时光凯旋记为DLC#1 普通战）：</p>
+<table>
+<thead>
+<tr>
+<th align="center">层数</th>
+<th align="center">普通作战</th>
+<th align="center">紧急作战</th>
+<th align="center">DLC#1 普通作战</th>
+<th align="center">DLC#1 紧急作战</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">1-3 层</td>
+<td align="center">15</td>
+<td align="center">20</td>
+<td align="center">25</td>
+<td align="center">30</td>
+</tr>
+<tr>
+<td align="center">4 层</td>
+<td align="center">25</td>
+<td align="center">35</td>
+<td align="center">45</td>
+<td align="center">55</td>
+</tr>
+<tr>
+<td align="center">5 层</td>
+<td align="center">35</td>
+<td align="center">45</td>
+<td align="center">55</td>
+<td align="center">65</td>
+</tr>
+<tr>
+<td align="center">辉光天顶</td>
+<td align="center">50</td>
+<td align="center">60</td>
+<td align="center">-</td>
+<td align="center">-</td>
+</tr>
+<tr>
+<td align="center">逍遥兰若</td>
+<td align="center">-</td>
+<td align="center">-</td>
+<td align="center">65</td>
+<td align="center">75</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>在“<code>诡谲断章</code>”中进行的作战<strong>按当前所在层数</strong>结算；<br>紧急神出鬼没无漏获得20分，紧急建制无漏获得20分，每局游戏仅计一次；<br>在持有“<code>滚动先祖</code>”的情况下，每关再额外追加5分。  </p>
 </blockquote>
-<p>普通关：<code>20</code>分</p>
-<p>紧急关：<code>25</code>分</p>
-<p>DLC普通关：<code>30</code>分</p>
-<p>DLC紧急关：<code>40</code>分</p>
-<p>BOSS关看见BOSS：<code>50</code>分</p>
-<p>BOSS关击败BOSS：<code>60</code>分</p>
-<p>奎隆上供超过50得<code>25</code>超过100得<code>40</code>超过200的<code>60</code>(不叠加)</p>
-<p><a target="_blank" rel="noopener" href="https://prts.wiki/w/%E9%9B%86%E6%88%90%E6%88%98%E7%95%A5#3._%E6%8B%9B%E5%8B%9F%E5%B9%B2%E5%91%98"><code>蓝色临招</code></a>六星<code>100</code>分其余临招<code>50</code>分</p>
-<p>鸭熊鼠狗统一<code>30</code>分</p>
+</li>
+<li><p>通关三层关底boss时，获得50分。</p>
+</li>
+<li><p>通关各结局获得分数如下：</p>
+<table>
+<thead>
+<tr>
+<th align="center">紧急授课</th>
+<th align="center">紧急授课+船</th>
+<th align="center">思维矫正</th>
+<th align="center">思维矫正+船</th>
+<th align="center">混乱*</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">100</td>
+<td align="center">120</td>
+<td align="center">140</td>
+<td align="center">180</td>
+<td align="center">10</td>
+</tr>
+<tr>
+<td align="center">朝谒</td>
+<td align="center">朝谒+船</td>
+<td align="center">魂灵朝谒</td>
+<td align="center">魂灵朝谒+船</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">200</td>
+<td align="center">250</td>
+<td align="center">250</td>
+<td align="center">300</td>
+<td align="center">30</td>
+</tr>
+<tr>
+<td align="center">圣城</td>
+<td align="center"></td>
+<td align="center">圣城+滚</td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">50</td>
+<td align="center"></td>
+<td align="center">130</td>
+<td align="center"></td>
+<td align="center">30</td>
+</tr>
+<tr>
+<td align="center">奎隆（放生）</td>
+<td align="center">奎隆</td>
+<td align="center">奎隆＋滚（放生）</td>
+<td align="center">奎隆＋滚</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">240</td>
+<td align="center">480</td>
+<td align="center">260</td>
+<td align="center">600</td>
+<td align="center">50</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>*仅当boss进入混乱阶段才可获得混乱加分（弗莱蒙彻“诸思之解答”出现三阶段，朝谒或魂灵朝谒出现裹骸死士，圣光爱国者出现三阶段，授法出现新铏</p>
+</blockquote>
+</li>
+<li><p>狗&#x2F;鸭&#x2F;熊&#x2F;鼠，每击杀一只获得10分。</p>
+</li>
+<li><p>结算时每个藏品获得2分。</p>
+</li>
+<li><p>若整局游戏没有进入过“<code>诡谲断章</code>”且成功通关，则结算时额外获得80分。</p>
+</li>
+<li><p>临时招募选下后，六星干员获得20分，五星干员10分，四星干员5分。</p>
+</li>
+<li><p>若在进入五层关底boss前藏品池内拥有“<code>巴别塔誓言</code>”且不选择进入“<code>朝谒</code>”或“<code>魂灵朝谒</code>”，获得5分。</p>
+</li>
+</ol>
+</li>
+<li><p>重开规则</p>
+<ol>
+<li>在进入第一个不期而遇之后，若不是“<code>相遇</code>”事件，选手可以选择无条件无限制烧水重开。</li>
+<li>若道中因断线无法重连的选手，可以无条件重开一次。</li>
+</ol>
+</li>
+</ol>
 <h2 id="赛程"><a href="#赛程" class="headerlink" title="赛程"></a>赛程</h2><blockquote>
 <p>2024年12月15日：规则初步确定，开始招募工作人员。</p>
 </blockquote>
 <ul>
-<li>2024年12月19日：开始填写报名表</li>
+<li><p>2024年12月19日：开始填写报名表。</p>
+</li>
+<li><p>2024年12月29日：规则开始做最后的规则调试。</p>
+</li>
 </ul>
-<div id="paginator"></div></div><div id="post-footer"><div id="pages" style="justify-content: flex-end"><div class="footer-link" style="width: 50%;right:1px;border-left:1px #fe2 solid"><a href="/2024/12/14/%E4%B8%AD%E5%9B%BD%E6%97%A0%E7%BA%BF%E7%94%B5%E5%8D%8F%E4%BC%9A%E4%B8%9A%E4%BD%99%E7%94%B5%E5%8F%B0%E6%93%8D%E4%BD%9C%E8%AF%81%E4%B9%A6%E8%80%83%E8%AF%95%E9%A2%98%E5%BA%93%E9%9B%86%E9%94%A6-B%E7%B1%BB/">中国无线电协会业余电台操作证书考试题库集锦 B类 上一篇 →</a></div></div></div><div id="comments"><div id="gitalk"></div></div></div><div class="bottom-btn"><div><a class="i-top" id="to-top" onClick="scrolls.scrolltop();" title="回到顶部" style="opacity: 0; display: none;">∧ </a><a class="i-index" id="to-index" href="#toc-div" title="文章目录">≡</a><a class="i-color" id="color-mode" onClick="colorMode.change()" title="切换主题"></a></div></div></article><aside><div id="about"><a href="/" id="logo"><img src="https://ak.hypergryph.com/assets/index/images/ak/pc/faction/1.png" alt="Logo"></a><h1 id="Dr"><a href="/">Dr.BD4WXR</a></h1><div id="description"><p></p></div><div id="social-links"><a class="social" target="_blank" rel="noopener" href="https://github.com/xingzhiyou"><i class="fab fa-github" alt="GitHub"></i></a><a class="social" href="1043953801@qq.com"><i class="fa fa-envelope" alt="E-Mail"></i></a></div></div><div id="aside-block"><div id="toc-div"><h1>目录</h1><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A7%84%E5%88%99"><span class="toc-number">1.</span> <span class="toc-text">规则</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BE%97%E5%88%86"><span class="toc-number">2.</span> <span class="toc-text">得分</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%B5%9B%E7%A8%8B"><span class="toc-number">3.</span> <span class="toc-text">赛程</span></a></li></ol></div></div><footer><nobr>构建自 <a target="_blank" rel="noopener" href="http://hexo.io">Hexo</a></nobr><wbr><nobr> 使用主题 <a target="_blank" rel="noopener" href="https://github.com/Yue-plus/hexo-theme-arknights">Arknights</a></nobr><wbr><nobr> 主题作者 <a target="_blank" rel="noopener" href="https://github.com/Yue-plus">Yue_plus</a></nobr></footer></aside></main><canvas id="canvas-dust"></canvas></body></html>
+<div id="paginator"></div></div><div id="post-footer"><div id="pages" style="justify-content: flex-end"><div class="footer-link" style="width: 50%;right:1px;border-left:1px #fe2 solid"><a href="/2024/12/14/%E4%B8%AD%E5%9B%BD%E6%97%A0%E7%BA%BF%E7%94%B5%E5%8D%8F%E4%BC%9A%E4%B8%9A%E4%BD%99%E7%94%B5%E5%8F%B0%E6%93%8D%E4%BD%9C%E8%AF%81%E4%B9%A6%E8%80%83%E8%AF%95%E9%A2%98%E5%BA%93%E9%9B%86%E9%94%A6-B%E7%B1%BB/">中国无线电协会业余电台操作证书考试题库集锦 B类 上一篇 →</a></div></div></div><div id="comments"><div id="gitalk"></div></div></div><div class="bottom-btn"><div><a class="i-top" id="to-top" onClick="scrolls.scrolltop();" title="回到顶部" style="opacity: 0; display: none;">∧ </a><a class="i-index" id="to-index" href="#toc-div" title="文章目录">≡</a><a class="i-color" id="color-mode" onClick="colorMode.change()" title="切换主题"></a></div></div></article><aside><div id="about"><a href="/" id="logo"><img src="https://ak.hypergryph.com/assets/index/images/ak/pc/faction/1.png" alt="Logo"></a><h1 id="Dr"><a href="/">Dr.BD4WXR</a></h1><div id="description"><p></p></div><div id="social-links"><a class="social" target="_blank" rel="noopener" href="https://github.com/xingzhiyou"><i class="fab fa-github" alt="GitHub"></i></a><a class="social" href="1043953801@qq.com"><i class="fa fa-envelope" alt="E-Mail"></i></a></div></div><div id="aside-block"><div id="toc-div"><h1>目录</h1><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A7%84%E5%88%99"><span class="toc-number">1.</span> <span class="toc-text">规则</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%B5%9B%E7%A8%8B"><span class="toc-number">2.</span> <span class="toc-text">赛程</span></a></li></ol></div></div><footer><nobr>构建自 <a target="_blank" rel="noopener" href="http://hexo.io">Hexo</a></nobr><wbr><nobr> 使用主题 <a target="_blank" rel="noopener" href="https://github.com/Yue-plus/hexo-theme-arknights">Arknights</a></nobr><wbr><nobr> 主题作者 <a target="_blank" rel="noopener" href="https://github.com/Yue-plus">Yue_plus</a></nobr></footer></aside></main><canvas id="canvas-dust"></canvas></body></html>
