@@ -121,13 +121,15 @@ document.addEventListener("pjax:complete", reset);reset()})</script><meta name="
 
 <hr>
 <h2 id="规则"><a href="#规则" class="headerlink" title="规则"></a>规则</h2><blockquote>
-<p>2024年12月15日：暂定，待修改。<br>2024年12月18日：初步确定，待测试。<br>2024年12月28日：基本确定，做最后的规则调试。</p>
+<p>2024年12月15日：暂定，待修改。<br>2024年12月18日：初步确定，待测试。<br>2024年12月28日：基本确定，做最后的规则调试。<br>2024年12月31日：定稿。</p>
 </blockquote>
 <ol>
 <li><p>比赛形式</p>
 <ul>
-<li>本次比赛采用战队赛的形式，每队<strong>3</strong>人，团队总分为<em>3</em>人得分之和。</li>
-<li>每支战队<em>3</em>人中应<strong>至少有1人</strong>在遇到“<code>相遇</code>”节点时，选择“<code>死仇时代的恨意</code>”。</li>
+<li><p>本次比赛采用战队赛的形式，每队<strong>3</strong>人，团队总分为<em>3</em>人得分之和。</p>
+</li>
+<li><p>每支战队<em>3</em>人中应<strong>至少有1人</strong>在遇到“<code>相遇</code>”节点时，选择“<code>死仇时代的恨意</code>”。</p>
+</li>
 </ul>
 </li>
 <li><p>干员使用与选取规则</p>
@@ -135,6 +137,8 @@ document.addEventListener("pjax:complete", reset);reset()})</script><meta name="
 <li><p>每支队伍在赛前通过程序在所有六星干员中<strong>随机选出24名六星</strong>干员，随后自选禁用其中的<strong>9</strong>名干员，同时可<strong>自选3名</strong>其他六星干员，组成队伍的“随机六星池”（（24-9+3&#x3D;<strong>18 名</strong>六星干员）。若队伍中存在高规格分队，还需额外自选<strong>禁用其中的4名</strong>干员，即自选<strong>禁用</strong>其中的<strong>13</strong>名干员（24-13+3&#x3D;<strong>14名</strong>六星干员）；该队伍的所有六星干员只能从“随机六星池”中选取且每位六星干员的登场总次数<strong>不得超过1次</strong>（干员<strong>黍限2次</strong>）。若比赛过程中有六星干员临时招募的情况，<strong>不计入上限次数</strong>。</p>
 </li>
 <li><p>每位选手除开局干员外，道中限制抓取<strong>4名五星干</strong>员（锡人不占用抓位次数），<strong>4名四星及三星干员</strong>，若超出限额，每个五星干员扣除<strong>35</strong>分，每个四星或三星干员扣除<strong>25</strong>分，选用<strong>高规格分队</strong>的选手不受此规则限制。</p>
+</li>
+<li><p>选用<code>高规格分队</code>的选手，可以在道中抓取对应的六星干员（只可抓取，<strong>不可编入编队及使用</strong>）以便在“<code>得偿所愿</code>”节点获得对应的藏品。（如抓取”<code>维什戴尔</code>“以获取“<code>轰鸣之手</code>”，抓取“<code>荒芜拉普兰德</code>”以获得“<code>波纹之手</code>”及“<code>断杖-波纹</code>”）</p>
 </li>
 </ol>
 </li>
@@ -145,7 +149,9 @@ document.addEventListener("pjax:complete", reset);reset()})</script><meta name="
 </li>
 <li><p>分数计算细则</p>
 <ol>
-<li><p>个人最终得分&#x3D;得分*（1+0.1（选择难度-10））。</p>
+<li><p>个人最终得分&#x3D;0.1*难度*得分；若在相遇节点选择“死仇时代的恨意”且成功通关“授法”，则变为个人最终得分&#x3D;0.1*(难度+3)*得分。</p>
+</li>
+<li><p>选择n12 以上难度的选手，若未能成功通关，则扣除个人总分150*（难度-12）分。</p>
 </li>
 <li><p>每层每关计分如下表所示（时光凯旋记为DLC#1 普通战）：</p>
 <table>
@@ -160,8 +166,8 @@ document.addEventListener("pjax:complete", reset);reset()})</script><meta name="
 </thead>
 <tbody><tr>
 <td align="center">1-3 层</td>
-<td align="center">15</td>
 <td align="center">20</td>
+<td align="center">25</td>
 <td align="center">25</td>
 <td align="center">30</td>
 </tr>
@@ -195,7 +201,7 @@ document.addEventListener("pjax:complete", reset);reset()})</script><meta name="
 </tr>
 </tbody></table>
 <blockquote>
-<p>在“<code>诡谲断章</code>”中进行的作战<strong>按当前所在层数</strong>结算；<br>紧急神出鬼没无漏获得20分，紧急建制无漏获得20分，每局游戏仅计一次；<br>在持有“<code>滚动先祖</code>”的情况下，每关再额外追加5分。  </p>
+<p>紧急<code>神出鬼没</code>无漏获得20分，紧急<code>建制</code>无漏获得20分，每局游戏仅计一次；<br>在持有“<code>滚动先祖</code>”的情况下，每关再额外追加5分。  </p>
 </blockquote>
 </li>
 <li><p>通关三层关底boss时，获得50分。</p>
@@ -204,10 +210,10 @@ document.addEventListener("pjax:complete", reset);reset()})</script><meta name="
 <table>
 <thead>
 <tr>
-<th align="center"></th>
-<th align="center"></th>
-<th align="center"></th>
-<th align="center"></th>
+<th align="center">-</th>
+<th align="center">-</th>
+<th align="center">-</th>
+<th align="center">-</th>
 <th align="center">混乱*</th>
 </tr>
 </thead>
@@ -243,14 +249,14 @@ document.addEventListener("pjax:complete", reset);reset()})</script><meta name="
 <td align="center">圣城</td>
 <td align="center"></td>
 <td align="center">圣城+滚</td>
-<td align="center"></td>
-<td align="center"></td>
+<td align="center">-</td>
+<td align="center">-</td>
 </tr>
 <tr>
 <td align="center">50</td>
-<td align="center"></td>
+<td align="center">-</td>
 <td align="center">130</td>
-<td align="center"></td>
+<td align="center">-</td>
 <td align="center">30</td>
 </tr>
 <tr>
@@ -269,7 +275,7 @@ document.addEventListener("pjax:complete", reset);reset()})</script><meta name="
 </tr>
 </tbody></table>
 <blockquote>
-<p>*仅当boss进入混乱阶段才可获得混乱加分（弗莱蒙彻“诸思之解答”出现三阶段，朝谒或魂灵朝谒出现裹骸死士，圣光爱国者出现三阶段，授法出现新铏</p>
+<p>*仅当boss进入混乱阶段才可获得混乱加分（弗莱蒙彻“诸思之解答”出现三阶段，朝谒或魂灵朝谒出现裹骸死士，圣光爱国者出现三阶段，授法出现新铏。）</p>
 </blockquote>
 </li>
 <li><p>狗&#x2F;鸭&#x2F;熊&#x2F;鼠，每击杀一只获得10分。</p>
@@ -286,8 +292,10 @@ document.addEventListener("pjax:complete", reset);reset()})</script><meta name="
 </li>
 <li><p>重开规则</p>
 <ol>
-<li>在进入第一个不期而遇之后，若不是“<code>相遇</code>”事件，选手可以选择无条件无限制烧水重开。</li>
-<li>若道中因断线无法重连的选手，可以无条件重开一次。</li>
+<li><p>在进入第一个不期而遇之后，若不是“<code>相遇</code>”事件，选手可以选择无条件无限制烧水重开。</p>
+</li>
+<li><p>若道中因断线无法重连的选手，可以无条件重开一次。</p>
+</li>
 </ol>
 </li>
 </ol>
