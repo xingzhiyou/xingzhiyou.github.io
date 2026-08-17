@@ -21,7 +21,7 @@
 │   ├── images/            # 文章图片
 │   ├── CNAME              # 自定义域名
 │   └── .nojekyll          # 让 GitHub 跳过 Jekyll 直接发布静态文件
-└── themes/arknights/      # 主题（注意：是 submodule 引用，内容不入库，见下文）
+└── themes/arknights/      # 主题（已入库，普通目录管理，直接替换文件即可更新）
 ```
 
 ## 环境要求
@@ -120,20 +120,19 @@ git push https://github.com/xingzhiyou/xingzhiyou.github.io.git HEAD:gh-pages
 - 不是故障：阅读器有轮询周期，手动刷新即可
 - 确认订阅的是 `https://ark.bd4wxr.top/atom.xml`
 
-### 3. 换电脑后主题为空（重要）
+### 3. 更新主题
 
-`themes/arknights` 在 git 中是 **submodule 引用**（指向 [Yue-plus/hexo-theme-arknights](https://github.com/Yue-plus/hexo-theme-arknights) 的 commit `a876421`），但仓库里 **`.gitmodules` 缺失**，因此 clone 后主题目录是空的，会导致构建出空页面（`No layout` 警告、页面 0 字节）。
-
-恢复方法：把该 commit 的主题内容放入 `themes/arknights/`：
+主题（`themes/arknights`）已转为**普通目录管理**并入库，clone 后自带主题，无需额外恢复。更新到上游最新版：
 
 ```bash
 git clone https://github.com/Yue-plus/hexo-theme-arknights.git /tmp/arknights-theme
-cd /tmp/arknights-theme
-git checkout a876421fc805edcd2ce961f760ca352147da4cc7
-rsync -a --exclude='.git' ./ <项目路径>/themes/arknights/
+rsync -a --exclude='.git' /tmp/arknights-theme/ themes/arknights/
+# 预览确认正常后：
+npm run build && npm run deploy
+git add themes/arknights && git commit -m "chore: 更新主题" && git push origin source
 ```
 
-**建议**：补回 `.gitmodules` 恢复 submodule，或把主题转为普通目录提交，让主题随仓库一起管理（可联系维护者协助）。
+> 注意：上游更新可能改动主题配置项（如 2026-07 版移除了 busuanzi、新增 bgm/vercount），更新后检查根目录 `_config.arknights.yml` 的覆盖项是否仍然有效。
 
 ### 4. 让某篇文章重新"推送"一次给订阅者
 
