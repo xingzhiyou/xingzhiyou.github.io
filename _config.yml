@@ -98,6 +98,18 @@ ignore:
 ## Themes: https://hexo.io/themes/
 theme: arknights
 
+# RSS 订阅
+## Docs: https://github.com/hexojs/hexo-generator-feed
+feed:
+  type:
+    - atom
+    - rss2
+  path:
+    - atom.xml
+    - rss.xml
+  limit: 20 # 订阅中包含的文章数量
+  content: true # 输出全文
+
 # Deployment
 ## Docs: https://hexo.io/docs/one-command-deployment
 deploy:
