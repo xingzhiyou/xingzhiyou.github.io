@@ -138,6 +138,10 @@ mermaid:
 pjax:
   enable: true
 
+# 背景音乐（上游主题默认开启并自动播放，这里关闭）
+bgm:
+  enable: false
+
 # 公式前端渲染
 mathjax:
   enable: true
