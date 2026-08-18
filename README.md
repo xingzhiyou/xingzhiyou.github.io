@@ -6,14 +6,15 @@
 - 主题：`themes/arknights`（自定义明日方舟主题，来自 [Yue-plus/hexo-theme-arknights](https://github.com/Yue-plus/hexo-theme-arknights)）
 - 分支结构：
   - `source`：Hexo 源码（本仓库默认分支，日常维护在此）
-  - `gh-pages`：生成的静态站点（由 `hexo deploy` 推送，GitHub 自动构建部署）
+  - 部署方式：推送 `source` 后由 GitHub Actions 自动构建并部署到 Pages（见 `.github/workflows/deploy.yml`），无需在本地执行部署命令
 
 ## 目录结构
 
 ```
 .
-├── _config.yml            # Hexo 主配置（含 feed、deploy 配置）
+├── _config.yml            # Hexo 主配置（含 feed 等）
 ├── _config.arknights.yml  # 主题配置
+├── .github/workflows/     # GitHub Actions 部署工作流
 ├── package.json           # 依赖与 npm 脚本
 ├── scaffolds/             # 新建文章的模板
 ├── source/
@@ -41,8 +42,15 @@ npm install
 
 ### 新建文章
 
+**方式一：在线编辑（推荐，零配置）**
+
+在浏览器打开 [github.dev](https://github.dev/xingzhiyou/xingzhiyou.github.io)（或仓库页面按 `.` 键），
+在 `source/_posts/` 下新建 `.md` 文件，写完在左侧源代码管理面板提交并推送，CI 自动部署。
+
+**方式二：本地命令行**
+
 ```bash
-# 命令行生成（自动套用 scaffolds/post.md 模板）
+# 自动套用 scaffolds/post.md 模板生成
 npx hexo new "文章标题"
 
 # 或直接在 source/_posts/ 下手动创建 .md 文件
@@ -53,9 +61,10 @@ npx hexo new "文章标题"
 ```markdown
 ---
 title: 文章标题
-date: 2026-08-17 23:56:59
+date: 2026-08-18 12:00:00
 tags: [标签1, 标签2]
 categories: [分类]
+permalink: 2026/08/18/文章标题/   # 可选，不填则用默认链接格式
 ---
 
 第一段内容…
@@ -65,29 +74,44 @@ categories: [分类]
 ## 正文小节
 ```
 
+> **重要规则**
+> 1. 文章必须放在 `source/_posts/` 下（可按分类建子目录，如 `source/_posts/草籽杯/`）。放在其他位置会被当作"页面"，不会出现在首页/归档/订阅里
+> 2. `date` 是文章发布与排序依据，不要填未来的时间（CI 构建时区为 UTC）
+> 3. 写完后 `git push origin source` 即自动部署上线，无需其他操作
+
 ### 修改 / 删除文章
 
-- 修改：直接编辑 `source/_posts/文章名.md`
-- 删除：删除对应文件即可
+- 修改：直接编辑 `source/_posts/文章名.md` 后提交推送
+- 删除：删除对应文件即可（上线后旧链接会 404）
 
-### 文章配图
+### 添加附件（图片 / 其他文件）
 
-图片放在 `source/images/` 下，文章中用相对路径引用（`_posts` 里的文件需回退一级）：
+**图片**：放在 `source/images/` 下（建议按分类建子目录，如 `source/images/草籽杯/`），文章中用相对路径引用（`_posts` 里的文件需回退一级）：
 
 ```markdown
-![说明](../images/随机器/示例1.png)
+![说明](../images/草籽杯/示例1.png)
 ```
 
-### 发布上线（每次改完文章执行）
+**其他附件**（zip / pdf / 音频等）：推荐在 `source/` 下建 `files/` 目录存放。`source/` 下除 `_posts` 外的文件会被原样复制到站点根目录，附件即可通过 `/files/xxx.zip` 访问：
+
+```markdown
+[下载附件](../files/示例.zip)
+```
+
+> 附件限制：GitHub 单文件上限 100MB（建议 50MB 内），大文件请改用外部网盘/图床链接。
+> 在 github.dev 里可以把图片/附件直接**拖进资源管理器**的对应目录，提交推送后即随站点上线。
+
+### 发布上线
+
+文章改完提交并推送到 `source` 分支后，GitHub Actions 自动构建部署（约 1-2 分钟生效）：
 
 ```bash
-npm run clean      # 1. 清理旧生成文件
-npm run build      # 2. 生成静态站点（自动把 .nojekyll 复制到 public）
-npm run deploy     # 3. 推送到 gh-pages，GitHub 自动构建部署
-git add -A         # 4. 备份源码到 source 分支
+git add -A
 git commit -m "更新说明"
 git push origin source
 ```
+
+查看进度：仓库 Actions 页面看最新一次 run；上线后在 `https://ark.bd4wxr.top` 确认。
 
 ### 本地预览
 
@@ -106,14 +130,9 @@ npm run server     # 打开 http://localhost:4000
 
 ### 1. 部署后线上没更新
 
-1. 先看 [GitHub 状态页](https://www.githubstatus.com) —— 若 Pages 处于故障/降级（429/503），等恢复后在 Actions 页面点 **Re-run jobs**，或重新 `npm run deploy`
-2. 若 `npm run deploy` 提示 `nothing to commit`（内容没变化），用空提交强制触发构建：
-
-```bash
-cd .deploy_git
-git commit --allow-empty -m "trigger build"
-git push https://github.com/xingzhiyou/xingzhiyou.github.io.git HEAD:gh-pages
-```
+1. 先看 [GitHub 状态页](https://www.githubstatus.com) —— 若 Pages 处于故障/降级（429/503），等恢复后在 Actions 页面点 **Re-run jobs**
+2. 检查最近一次部署是否成功：Actions 页面看最新 run，失败的通常卡在 `build` 步骤（点开日志排查，如依赖、语法问题）
+3. 若一切正常但线上仍旧内容，多为浏览器/CDN 缓存，硬刷新（`Cmd+Shift+R`）即可
 
 ### 2. RSS 没推送
 
@@ -127,8 +146,8 @@ git push https://github.com/xingzhiyou/xingzhiyou.github.io.git HEAD:gh-pages
 ```bash
 git clone https://github.com/Yue-plus/hexo-theme-arknights.git /tmp/arknights-theme
 rsync -a --exclude='.git' /tmp/arknights-theme/ themes/arknights/
-# 预览确认正常后：
-npm run build && npm run deploy
+# 预览确认正常后（推送即自动部署）：
+npm run build
 git add themes/arknights && git commit -m "chore: 更新主题" && git push origin source
 ```
 
@@ -144,5 +163,4 @@ git add themes/arknights && git commit -m "chore: 更新主题" && git push orig
 |---|---|
 | `npm run clean` | `hexo clean`，清理 public 和数据库 |
 | `npm run build` | `hexo generate && cp source/.nojekyll public/.nojekyll` |
-| `npm run deploy` | `hexo deploy`，推送到 gh-pages 分支 |
 | `npm run server` | `hexo server`，本地预览 |
