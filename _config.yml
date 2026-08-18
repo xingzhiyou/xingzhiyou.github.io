@@ -111,11 +111,7 @@ feed:
   content: true # 输出全文
 
 # Deployment
-## Docs: https://hexo.io/docs/one-command-deployment
-deploy:
-  type: git
-  repo: https://github.com/xingzhiyou/xingzhiyou.github.io.git
-  branch: gh-pages
+## 已改用 GitHub Actions 部署（.github/workflows/deploy.yml），不再使用 hexo-deployer-git
 
 server:
   auto_generate: true
