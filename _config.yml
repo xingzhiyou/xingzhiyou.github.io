@@ -89,7 +89,9 @@ pagination_dir: page
 
 # Include / Exclude file(s)
 ## include:/exclude: options only apply to the 'source/' folder
+## include 让 source/ 下的隐藏文件（如 .nojekyll）也能被复制到 public/
 include:
+  - '.nojekyll'
 exclude:
 ignore:
 
